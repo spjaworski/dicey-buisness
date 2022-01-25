@@ -1,0 +1,20 @@
+.die {
+    display: flex;
+    border-style: solid;
+    width: 30px;
+    height: 30px;
+    padding: 50px;
+    margin: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+/* .dieNum {
+    text-align: center;
+    vertical-align: baseline;
+} */
