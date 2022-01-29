@@ -1,7 +1,7 @@
-$(document).ready(function (){
- 
+$(document).ready(function () {
+
     let dieButton = document.createElement('button');
-    let dieButtonText= document.createTextNode('Generate Die');
+    let dieButtonText = document.createTextNode('Generate Die');
     dieButton.appendChild(dieButtonText);
     document.body.appendChild(dieButton);
 
@@ -11,59 +11,58 @@ $(document).ready(function (){
     dieRow.className = 'row';
     container.appendChild(dieRow);
 
-    createdDie = [];
+    let createdDie = [];
 
- let iter = 1;
- 
- class Die {
-    constructor() {
-        this.div = document.createElement('div');
-        this.value = Math.floor(Math.random() * 6) + 1
-        this.div.className = 'die';
-        this.div.id = `die${iter}`;
-        dieRow.appendChild(this.div);
-        let valueText = document.createTextNode(this.value);
-        this.div.appendChild(valueText)
-        console.log(this);
-        createdDie.push(Die);
-        console.log(createdDie);
-        iter ++;
+    let iter = 1;
 
-        
-    }
+    class Die {
+        constructor() {
+            this.div = document.createElement('div');
+            this.value = Math.floor(Math.random() * 6) + 1;
+            this.div.className = 'die';
+            this.div.id = `die${iter}`;
+            dieRow.appendChild(this.div);
+            console.log(this);
+            console.log(createdDie);
+        }
 
-    rollDie() {
-        
-    this.value = Math.floor(Math.random() * 6) + 1
-    this.valueText = this.value;
-    console.log(`The die rolled a ${this.value}.`)
+        roll() {
 
-    //won't update on page
-    }
+
+            this.value = Math.floor(Math.random() * 6) + 1;
+            this.div.innerHTML = this.value;
+            console.log(`The die rolled a ${this.value}.`);
+        }
     }
 
 
 
 
-// const die1 = new Die();
-
-// die1.rollDie(); 
-
-    dieButton.addEventListener('click', function(){
-        new Die();
-    })
-   
     let rollButton = document.createElement('button');
-    let rollText = document.createTextNode('Roll all die');
+    let rollText = document.createTextNode('Roll all dice');
     rollButton.appendChild(rollText);
     document.body.appendChild(rollButton);
 
-    let protoDie = new Die();
 
-    rollButton.addEventListener('click', function(){
-       protoDie.rollDie();
-        })
+
+
+    dieButton.addEventListener('click', () => {
+        const nextDie = new Die();
+        iter++;
+        nextDie.roll();
+
+        createdDie.push(nextDie);
+        rollButton.addEventListener('click', () => {
+
+            for (const instance in createdDie) {
+                ;
+
+                nextDie.roll();
+            }
+
+        });
     })
 
 
 
+})
