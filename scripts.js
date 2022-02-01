@@ -24,6 +24,7 @@ $(document).ready(function () {
             dieRow.appendChild(this.div);
             console.log(this);
             console.log(createdDie);
+            
         }
 
         roll() {
@@ -50,19 +51,28 @@ $(document).ready(function () {
         const nextDie = new Die();
         iter++;
         nextDie.roll();
-
+        
         createdDie.push(nextDie);
         rollButton.addEventListener('click', () => {
 
             for (const instance in createdDie) {
-                ;
-
                 nextDie.roll();
             }
 
         });
     })
 
+    let totalbtn = document.createElement('button');
+    let totaltext = document.createTextNode("Add all Dice");
+    totalbtn.appendChild(totaltext);
+    document.body.appendChild(totalbtn);
 
+    totalbtn.addEventListener('click', function() {
+        let dieTotal = 0;
+        createdDie.forEach(function(die) {
+            dieTotal += die.value;
+        })
+        alert(dieTotal);
+    })
 
 })
