@@ -25,11 +25,10 @@ $(document).ready(function () {
             console.log(this);
             console.log(createdDie);
             
+            
         }
 
         roll() {
-
-
             this.value = Math.floor(Math.random() * 6) + 1;
             this.div.innerHTML = this.value;
             console.log(`The die rolled a ${this.value}.`);
@@ -45,13 +44,17 @@ $(document).ready(function () {
     document.body.appendChild(rollButton);
 
 
-
+    // nextDie.addEventListener('click', () => {
+    //     nextDie.roll();
+    // })
 
     dieButton.addEventListener('click', () => {
         const nextDie = new Die();
         iter++;
         nextDie.roll();
-        
+        nextDie.div.addEventListener('click', () => {
+            nextDie.roll()
+        })
         createdDie.push(nextDie);
         rollButton.addEventListener('click', () => {
 
@@ -61,6 +64,8 @@ $(document).ready(function () {
 
         });
     })
+
+    
 
     let totalbtn = document.createElement('button');
     let totaltext = document.createTextNode("Add all Dice");
