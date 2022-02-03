@@ -43,17 +43,15 @@ $(document).ready(function () {
     rollButton.appendChild(rollText);
     document.body.appendChild(rollButton);
 
-
-    // nextDie.addEventListener('click', () => {
-    //     nextDie.roll();
-    // })
-
     dieButton.addEventListener('click', () => {
         const nextDie = new Die();
         iter++;
         nextDie.roll();
         nextDie.div.addEventListener('click', () => {
             nextDie.roll()
+        })
+        nextDie.div.addEventListener('dblclick', () => {
+            dieRow.removeChild(nextDie.div);
         })
         createdDie.push(nextDie);
         rollButton.addEventListener('click', () => {
@@ -81,3 +79,8 @@ $(document).ready(function () {
     })
 
 })
+
+
+// Add a feature where double clicking on a die on the page causes that die to be removed from the page
+
+//     Be careful to take appropriate measures so that the sumDice function still reports the correct sum after you delete a die. You need to not only remove the on-screen representation of the Die on the screen, but also remove the Die object from the array as well.
