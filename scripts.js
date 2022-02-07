@@ -48,10 +48,12 @@ $(document).ready(function () {
         iter++;
         nextDie.roll();
         nextDie.div.addEventListener('click', () => {
-            nextDie.roll()
+            nextDie.roll();
         })
         nextDie.div.addEventListener('dblclick', () => {
             dieRow.removeChild(nextDie.div);
+            removedDie = createdDie.indexOf(nextDie.div.id)
+            createdDie.splice(removedDie, 1);
         })
         createdDie.push(nextDie);
         rollButton.addEventListener('click', () => {
